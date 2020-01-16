@@ -9,8 +9,8 @@ export class PayersController {
   constructor(private readonly payersService: PayersService) {}
 
   @Get()
-  @MessagePattern('getPayers')
-  async getPayers(@Body() request): Promise<any> {
+  @MessagePattern('getAllPayers')
+  async getAllPayers(@Body() request): Promise<any> {
     return await this.payersService.getAllPayers();
   }
 }
