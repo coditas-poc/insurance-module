@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards, Req, Logger, Body } from '@nestjs/common';
+import { Controller, Get, UseGuards, Req, Logger, Body, Post } from '@nestjs/common';
 import { PayersService } from './payers.service';
 import { MessagePattern } from '@nestjs/microservices';
 
@@ -13,4 +13,11 @@ export class PayersController {
   async getAllPayers(@Body() request): Promise<any> {
     return await this.payersService.getAllPayers();
   }
+
+  @Post()
+  @MessagePattern('addPayers')
+  async addPayers(@Body() request): Promise<any> {
+    return await this.payersService.addPayers(request);
+  }
+
 }
